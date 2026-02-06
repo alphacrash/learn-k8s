@@ -14,6 +14,7 @@ kubectl logs -f grade-submission-api-65756568d7-lbtcs -n grade-submission
 
 ```bash
 kubectl delete deployments --all -n grade-submission
+kubectl delete deployments,statefulsets,pvc,pod --all -n grade-submission
 ```
 
 ## Rollback
