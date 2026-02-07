@@ -4,6 +4,12 @@ Udemy - https://www.udemy.com/course/kubernetes-training-learn-kubernetes-from-z
 
 This repo contains code made while learning the course.
 
+## Get
+
+```bash
+kubectl get services -n grade-submission
+```
+
 ## Logs
 
 ```bash
@@ -14,7 +20,7 @@ kubectl logs -f grade-submission-api-65756568d7-lbtcs -n grade-submission
 
 ```bash
 kubectl delete deployments --all -n grade-submission
-kubectl delete deployments,statefulsets,pvc,pod,hpa --all -n grade-submission
+kubectl delete deployments,statefulsets,pvc,pod,hpa,services --all -n grade-submission
 ```
 
 ## Rollback
@@ -49,4 +55,10 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 Check cpu and memory usage
 ```bash
 kubectl top pods -n grade-submission
+```
+
+## Nginx
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
 ```
