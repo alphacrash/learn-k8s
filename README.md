@@ -14,7 +14,7 @@ kubectl logs -f grade-submission-api-65756568d7-lbtcs -n grade-submission
 
 ```bash
 kubectl delete deployments --all -n grade-submission
-kubectl delete deployments,statefulsets,pvc,pod --all -n grade-submission
+kubectl delete deployments,statefulsets,pvc,pod,hpa --all -n grade-submission
 ```
 
 ## Rollback
@@ -39,3 +39,14 @@ docker system prune -a
 2. Open Docker Desktop
     * Disable Kubernetes
     * Delete all containers, images and builds
+
+## Metrics Server
+
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml && kubectl patch deployment metrics-server -n kube-system --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value":"--kubelet-insecure-tls"}]'
+```
+
+Check cpu and memory usage
+```bash
+kubectl top pods -n grade-submission
+```
