@@ -20,7 +20,7 @@ kubectl logs -f grade-submission-api-65756568d7-lbtcs -n grade-submission
 
 ```bash
 kubectl delete deployments --all -n grade-submission
-kubectl delete deployments,statefulsets,pvc,pod,hpa,services --all -n grade-submission
+kubectl delete deployments,statefulsets,pvc,pod,hpa,services,secret,configmap --all -n grade-submission
 ```
 
 ## Rollback
@@ -61,4 +61,14 @@ kubectl top pods -n grade-submission
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
+```
+
+## Helm commands
+
+```bash
+helm template .
+helm package .
+helm install <name> <package_name>
+helm list .
+helm uninstall <package_name>
 ```
